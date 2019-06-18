@@ -21,6 +21,14 @@ def team_colors(team_name)
     return team_data[:colors] if team_data[:team_name] == team_name
   end
 end
+
+def team_names
+  game_hash.collect do |location, team_data|
+    team_data[:team_name]
+  end
+end
+
+
 # le hash - I just copy/pasted from the last time I did this lab; I am not building this hash again lol
 def game_hash
   {

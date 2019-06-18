@@ -6,12 +6,18 @@ require "pry"
 def num_points_scored(player_name)
   game_hash.each do |location, team_data|
     team_data[:players].each do |current_player, player_data|
-    #  binding.pry
       return player_data[:points] if player_name == current_player
     end
   end
 end
 
+def shoe_size(player_name)
+  game_hash.each do |location, team_data|
+    team_data[:players].each do |current_player, player_data|
+      return player_data[:shoe] if player_name == current_player
+    end
+  end
+end
 # le hash - I just copy/pasted from the last time I did this lab; I am not building this hash again lol
 def game_hash
   {

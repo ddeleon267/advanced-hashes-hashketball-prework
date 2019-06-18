@@ -35,6 +35,14 @@ def player_numbers(team_name)
     end
   end.flatten.compact
 end
+
+def player_stats(player_name)
+  game_hash.each do |location, team_data|
+    team_data[:players].each do |current_player, player_data|
+      return player_data if player_name == current_player
+    end
+  end
+end
 # le hash - I just copy/pasted from the last time I did this lab; I am not building this hash again lol
 def game_hash
   {
@@ -76,7 +84,7 @@ def game_hash
           number: 1,
           shoe: 19,
           points: 26,
-          rebounds: 12,
+          rebounds: 11,
           assists: 6,
           steals: 3,
           blocks: 8,
@@ -115,7 +123,7 @@ def game_hash
           points: 12,
           rebounds: 4,
           assists: 7,
-          steals: 7,
+          steals: 22,
           blocks: 15,
           slam_dunks: 10
         },
@@ -145,7 +153,7 @@ def game_hash
           points: 6,
           rebounds: 12,
           assists: 12,
-          steals: 22,
+          steals: 7,
           blocks: 5,
           slam_dunks: 12
         }

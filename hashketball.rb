@@ -43,6 +43,20 @@ def player_stats(player_name)
     end
   end
 end
+
+def big_shoe_rebounds
+  shoe_size = 0
+  rebounds = 0
+  game_hash.each do |location, team_data|
+    team_data[:players].each do |current_player, player_data|
+      if player_data[:shoe] > shoe_size
+        shoe_size = player_data[:shoe]
+        rebounds = player_data[:rebounds]
+      end
+    end
+  end
+  rebounds
+end
 # le hash - I just copy/pasted from the last time I did this lab; I am not building this hash again lol
 def game_hash
   {

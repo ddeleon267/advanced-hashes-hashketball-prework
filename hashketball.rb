@@ -82,6 +82,20 @@ def winning_team
   my_hash.key(my_hash.values.max)
 
 end
+
+def player_with_longest_name
+  player = "banana"
+  length = 0
+  game_hash.each do |location, team_data|
+    team_data[:players].each do |current_player, player_data|
+      if current_player.length > length
+        length = current_player.length
+        player = current_player
+      end
+    end
+  end
+  player
+end
 # le hash - I just copy/pasted from the last time I did this lab; I am not building this hash again lol
 def game_hash
   {

@@ -96,6 +96,20 @@ def player_with_longest_name
   end
   player
 end
+
+def long_name_steals_a_ton?
+  stealz = 0
+  player = "banana"
+  game_hash.each do |location, team_data|
+    team_data[:players].each do |current_player, player_data|
+      if player_data[:steals] > stealz
+        stealz = player_data[:steals]
+        player = current_player
+      end
+    end
+  end
+  player == player_with_longest_name
+end
 # le hash - I just copy/pasted from the last time I did this lab; I am not building this hash again lol
 def game_hash
   {

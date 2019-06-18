@@ -71,6 +71,17 @@ def most_points_scored
   end
   player
 end
+
+def winning_team
+  my_hash = Hash.new(0)
+  game_hash.each do |location, team_data|
+    team_data[:players].each do |current_player, player_data|
+      my_hash[team_data[:team_name]] += player_data[:points]
+    end
+  end
+  my_hash.key(my_hash.values.max)
+
+end
 # le hash - I just copy/pasted from the last time I did this lab; I am not building this hash again lol
 def game_hash
   {

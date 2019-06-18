@@ -1,7 +1,4 @@
-# Write your code here!
-#testing 1-2-3
 require "pry"
-
 
 def num_points_scored(player_name)
   game_hash.each do |location, team_data|
@@ -16,6 +13,12 @@ def shoe_size(player_name)
     team_data[:players].each do |current_player, player_data|
       return player_data[:shoe] if player_name == current_player
     end
+  end
+end
+
+def team_colors(team_name)
+  game_hash.each do |location, team_data|
+    return team_data[:colors] if team_data[:team_name] == team_name
   end
 end
 # le hash - I just copy/pasted from the last time I did this lab; I am not building this hash again lol

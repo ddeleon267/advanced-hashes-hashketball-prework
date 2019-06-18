@@ -28,7 +28,13 @@ def team_names
   end
 end
 
-
+def player_numbers(team_name)
+  game_hash.collect do |location, team_data|
+    team_data[:players].collect do |player_name, player_data|
+      player_data[:number] if team_data[:team_name] == team_name
+    end
+  end.flatten.compact
+end
 # le hash - I just copy/pasted from the last time I did this lab; I am not building this hash again lol
 def game_hash
   {

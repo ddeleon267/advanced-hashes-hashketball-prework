@@ -23,15 +23,15 @@ def team_colors(team_name)
 end
 
 def team_names
-  game_hash.collect do |location, team_data|
-    team_data[:team_name]
-  end
+  game_hash.collect { |location, team_data| team_data[:team_name] }
 end
 
 def player_numbers(team_name)
   game_hash.collect do |location, team_data|
-    team_data[:players].collect do |player_name, player_data|
-      player_data[:number] if team_data[:team_name] == team_name
+    if team_data[:team_name] == team_name
+      team_data[:players].collect do |player_name, player_data|
+        player_data[:number]
+      end
     end
   end.flatten.compact
 end
@@ -49,8 +49,9 @@ def big_shoe_rebounds
   rebounds = 0
   game_hash.each do |location, team_data|
     team_data[:players].each do |current_player, player_data|
-      if player_data[:shoe] > shoe_size
-        shoe_size = player_data[:shoe]
+      current_shoe = player_data[:shoe]
+      if current_shoe > shoe_size
+        shoe_size = current_shoe
         rebounds = player_data[:rebounds]
       end
     end
@@ -63,8 +64,9 @@ def most_points_scored
   player = "banana"
   game_hash.each do |location, team_data|
     team_data[:players].each do |current_player, player_data|
-      if player_data[:points] > points_scored
-        points_scored = player_data[:points]
+      current_points = player_data[:points]
+      if current_points > points_scored
+        points_scored = current_points
         player = current_player
       end
     end
@@ -80,7 +82,6 @@ def winning_team
     end
   end
   my_hash.key(my_hash.values.max)
-
 end
 
 def player_with_longest_name
@@ -88,8 +89,9 @@ def player_with_longest_name
   length = 0
   game_hash.each do |location, team_data|
     team_data[:players].each do |current_player, player_data|
-      if current_player.length > length
-        length = current_player.length
+      current_length = current_player.length
+      if current_length > length
+        length = current_length
         player = current_player
       end
     end
@@ -110,6 +112,7 @@ def long_name_steals_a_ton?
   end
   player == player_with_longest_name
 end
+
 # le hash - I just copy/pasted from the last time I did this lab; I am not building this hash again lol
 def game_hash
   {
